@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{base/layout.html}">
+	
+	<body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item active">Frequência</li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+            <p class="lead">Média da frequencia de mercado</p>
+            
+            <div class="card-deck mb-3 text-center">
+                <!-- Últimos 3 pregões -->
+                <div class="card mb-4 shadow-sm">
+	                <div class="card-header">
+	                    <h4 class="my-0 font-weight-normal">3 dias</h4>
+	                </div>	                
+	                <div class="card-body">
+	                    <h1 class="card-title pricing-card-title">3,5 <small class="text-muted"> pontos</small></h1>
+	                    <ul class="list-unstyled mt-3 mb-4">
+	                        <li>10 users included</li>
+	                        <li>2 GB of storage</li>
+	                        <li>Email support</li>
+	                        <li>Help center access</li>
+	                    </ul>
+	                </div>
+                </div>
+                <!-- Últimos 5 pregões -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">5 dias</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>20 users included</li>
+                            <li>10 GB of storage</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Últimos 7 pregões -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">7 dias</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>30 users included</li>
+                            <li>15 GB of storage</li>
+                            <li>Phone and email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>                        
+	</body>	
+</html>

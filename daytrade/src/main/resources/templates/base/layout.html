@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"  
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="pt-br">
+      
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Language" content="pt-br, en">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+		           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+		
+		<link rel="stylesheet" href="../bootstrap.min.css">
+		<link rel="stylesheet" href="../custom.min.css">	
+		<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Atitude Vencedora</title>
+	</head>
+	
+	<body>
+        <!-- Navbar -->
+        <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+            <div class="container">
+	            <a href="#" class="navbar-brand">Day Trade</a>
+	            
+	            <button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarResponsive" aria-controls="navbarResponsive"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <!-- Frequencia -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Frequência <span class="caret"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="download">
+                                <a class="dropdown-item" href="/frequencia/principal">Frequência atual</a>
+                                <a class="dropdown-item" href="/frequencia/historico">Histórico de frequência</a>
+                                <a class="dropdown-item" href="/frequencia/cadastro">Cadastrar frequência</a>
+                                <a class="dropdown-item" href="/frequencia/carregar-arquivo">Carregar arquivo</a>
+                            </div>
+                        </li>						
+						
+						<!-- Players/Corretoras -->
+						<li class="nav-item">
+                            <a class="nav-link" href="../help/">Players</a>
+						</li>
+						
+						<!-- Times & Trades -->
+						<li class="nav-item">
+                            <a class="nav-link" href="http://blog.bootswatch.com">Times & Trades</a>
+                        </li>
+						
+						<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Flatly <span class="caret"></span></a>
+							<div class="dropdown-menu" aria-labelledby="download">
+								<a class="dropdown-item" href="https://jsfiddle.net/bootswatch/jmg3gykg/">Open in JSFiddle</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="../4/flatly/bootstrap.min.css">bootstrap.min.css</a>
+								<a class="dropdown-item" href="../4/flatly/bootstrap.css">bootstrap.css</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="../4/flatly/_variables.scss">_variables.scss</a>
+								<a class="dropdown-item" href="../4/flatly/_bootswatch.scss">_bootswatch.scss</a>
+							</div>
+                        </li>
+					</ul>
+					
+					<ul class="nav navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="#">Atitude Vencedora</a></li>
+					</ul>
+				</div><!-- navbar -->
+			</div>
+		</div>
+		
+		<!-- Conteudo 
+		<div class="container" layout:fragment="custom-content">
+			<div class="page-header" id="banner">
+				<div class="row">
+					<div class="col-lg-8 col-md-7 col-sm-6">
+						<h1>Flatly</h1>
+						<p class="lead">Flat and modern</p>
+					</div>
+				</div>
+			</div>
+		</div>-->
+
+		<div class="container">
+			<nav aria-label="breadcrumb" role="navigation">
+				<ol class="breadcrumb">
+					<th:block layout:fragment="breadcrumb"></th:block>
+				</ol>
+			</nav>
+			<div class="content">
+				<div layout:fragment="page_content"></div>
+			</div>
+		</div>
+
+	    <script src="../jquery.min.js"></script>
+		<script src="../bootstrap.min.js"></script>
+			
+        <th:block layout:fragment="scripts"> </th:block>
+	</body>
+</html>
