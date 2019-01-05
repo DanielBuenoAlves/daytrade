@@ -21,11 +21,9 @@ public class FrequenciaController {
     
     @RequestMapping(value = { "/principal" }, method = RequestMethod.GET)
     public String index(Model model) {
-        //model.addAttribute("message", message);
-        
-        
-        
-        
+                        
+        model.addAttribute("frequenciaVO", this.frequenciaService.frequenciaAtual());    
+                
         return "frequencia-principal";
     }
     

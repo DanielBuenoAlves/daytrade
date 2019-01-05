@@ -10,55 +10,51 @@
         </th:block>
         
         <div layout:fragment="page_content" id="page_content">
-            <p class="lead">Média da frequencia de mercado</p>
-            
+            <p th:inline="text">De [[${#dates.format(frequenciaVO.dataInicial,'dd/MM/yyyy')}]] até [[${#dates.format(frequenciaVO.dataFinal, 'dd/MM/yyyy')}]]</p>
             <div class="card-deck mb-3 text-center">
                 <!-- Últimos 3 pregões -->
                 <div class="card mb-4 shadow-sm">
 	                <div class="card-header">
-	                    <h4 class="my-0 font-weight-normal">3 dias</h4>
+	                    <h4 class="my-0 font-weight-normal">3 pregões</h4>
 	                </div>	                
 	                <div class="card-body">
-	                    <h1 class="card-title pricing-card-title">3,5 <small class="text-muted"> pontos</small></h1>
-	                    <ul class="list-unstyled mt-3 mb-4">
-	                        <li>10 users included</li>
-	                        <li>2 GB of storage</li>
-	                        <li>Email support</li>
-	                        <li>Help center access</li>
-	                    </ul>
+	                    <h1 class="card-title pricing-card-title" th:text="${frequenciaVO.ultimos3Pregoes}"> <small class="text-muted"> pontos</small></h1>
 	                </div>
                 </div>
                 <!-- Últimos 5 pregões -->
                 <div class="card mb-4 shadow-sm">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">5 dias</h4>
+                        <h4 class="my-0 font-weight-normal">5 pregões</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>20 users included</li>
-                            <li>10 GB of storage</li>
-                            <li>Priority email support</li>
-                            <li>Help center access</li>
-                        </ul>
+                        <h1 class="card-title pricing-card-title" th:text="${frequenciaVO.ultimos5Pregoes}"> <small class="text-muted">/ pontos</small></h1>
                     </div>
                 </div>
                 <!-- Últimos 7 pregões -->
                 <div class="card mb-4 shadow-sm">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">7 dias</h4>
+                        <h4 class="my-0 font-weight-normal">7 pregões</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>30 users included</li>
-                            <li>15 GB of storage</li>
-                            <li>Phone and email support</li>
-                            <li>Help center access</li>
-                        </ul>
+                        <h1 class="card-title pricing-card-title" th:text="${frequenciaVO.ultimos7Pregoes}"> <small class="text-muted">/ pontos</small></h1>
+
                     </div>
                 </div>
             </div>
-        </div>                        
+            <hr/>
+            <!-- MindSet -->
+            <dl class="row">
+                <dt class="col-sm-2">Scalper trade</dt>
+				<dd class="col-sm-9">De <strong>0,5</strong> a <strong>1</strong> frequência</dd>
+			     
+			    <dt class="col-sm-2">Trade location</dt>
+			    <dd class="col-sm-9">De <strong>2</strong> a <strong>3</strong> frequências</dd>	
+				
+                <dt class="col-sm-2">Trade para segurar</dt>
+                <dd class="col-sm-9">De <strong>3</strong> a <strong>5</strong> frequências</dd> 		
+	        </dl> 
+	        
+        </div><!-- Content -->      
+                 
 	</body>	
 </html>

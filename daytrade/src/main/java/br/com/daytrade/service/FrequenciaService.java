@@ -1,6 +1,7 @@
 package br.com.daytrade.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.daytrade.domain.Frequencia;
 import br.com.daytrade.repository.FrequenciaRepository;
+import br.com.daytrade.service.vo.FrequenciaVO;
 
 @Service
 public class FrequenciaService {
@@ -30,25 +32,44 @@ public class FrequenciaService {
     }
         
     
-    public void frequenciaAtual() {
+    public FrequenciaVO frequenciaAtual() {
         
         List<Frequencia> frequencias = this.buscaPorDias(15);
         int cont = 0;
         
         BigDecimal ultimos3 = new BigDecimal(0);
-        BigDecimal ultimos5 = null;
+        BigDecimal ultimos5 = new BigDecimal(0);
+        BigDecimal ultimos7 = new BigDecimal(0);
         
         for(Frequencia fre : frequencias) {
             
             //Ultimos 3
             if(cont < 3) {
                 ultimos3 = ultimos3.add(fre.getMedia());
-            } else if(cont > 3 && cont < 5) {
+            } 
+            if(cont < 5) {
                 ultimos5 = ultimos5.add(fre.getMedia());
+            }
+            if(cont < 7) {
+                ultimos7 = ultimos7.add(fre.getMedia());
             }
                         
             cont++;
         }
+        
+        System.out.println(ultimos3.divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
+        System.out.println(ultimos5.divide(new BigDecimal(5), 2, RoundingMode.HALF_UP));
+        System.out.println(ultimos7.divide(new BigDecimal(7), 2, RoundingMode.HALF_UP));
+        
+        System.out.println(frequencias.get(0).getPregao());
+        System.out.println(frequencias.get(6).getPregao());
+        FrequenciaVO vo = new FrequenciaVO(frequencias.get(0).getPregao(), frequencias.get(6).getPregao());
+        
+        vo.setUltimos3Pregoes(ultimos3.divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
+        vo.setUltimos5Pregoes(ultimos5.divide(new BigDecimal(5), 2, RoundingMode.HALF_UP));
+        vo.setUltimos7Pregoes(ultimos7.divide(new BigDecimal(7), 2, RoundingMode.HALF_UP));
+        
+        return vo;
         
     }
     
