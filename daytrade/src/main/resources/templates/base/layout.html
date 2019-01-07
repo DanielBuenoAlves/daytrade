@@ -37,22 +37,28 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Frequência <span class="caret"></span></a>
                             <div class="dropdown-menu" aria-labelledby="download">
-                                <a class="dropdown-item" href="/frequencia/principal">Frequência atual</a>                                
+                                <a class="dropdown-item" href="/frequencia/principal">Atual</a>                                
                                 <a class="dropdown-item" href="/frequencia/cadastro">Cadastro</a>
                                 <a class="dropdown-item" href="/frequencia/historico">Histórico</a>
                             </div>
                         </li>						
 						
 						<!-- Players/Corretoras -->
-						<li class="nav-item">
-                            <a class="nav-link" href="/corretora/todas">Players</a>
-						</li>
+						<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Corretora<span class="caret"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="download">
+                                <a class="dropdown-item" href="/corretora/todas">Lista</a>                                
+                                <a class="dropdown-item" href="/corretora/saldo">Saldo</a>
+                                <a class="dropdown-item" href="/frequencia/carregar">Carregar saldo</a>
+                            </div>
+                        </li>                       					
 						
 						<!-- Times & Trades -->
 						<li class="nav-item">
-                            <a class="nav-link" href="http://blog.bootswatch.com">Times & Trades</a>
+                            <a class="nav-link" href="/times&trades/busca">Times & Trades</a>
                         </li>
 						
+						<!--  
 						<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Flatly <span class="caret"></span></a>
 							<div class="dropdown-menu" aria-labelledby="download">
@@ -64,7 +70,7 @@
 								<a class="dropdown-item" href="../4/flatly/_variables.scss">_variables.scss</a>
 								<a class="dropdown-item" href="../4/flatly/_bootswatch.scss">_bootswatch.scss</a>
 							</div>
-                        </li>
+                        </li> -->
 					</ul>
 					
 					<ul class="nav navbar-nav ml-auto">

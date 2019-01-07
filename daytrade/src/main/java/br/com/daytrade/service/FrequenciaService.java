@@ -34,7 +34,7 @@ public class FrequenciaService {
     
     public FrequenciaVO frequenciaAtual() {
         //FIXME:Corrigir para buscar a data do ultimo pregão!
-        List<Frequencia> frequencias = this.buscaPorDias(25);
+        List<Frequencia> frequencias = this.buscaPorDias(20);
         int cont = 0;
         
         BigDecimal ultimos3 = new BigDecimal(0);

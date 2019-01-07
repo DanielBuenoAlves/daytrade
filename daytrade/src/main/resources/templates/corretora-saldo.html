@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{base/layout.html}">
+	
+	<body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item"><a href="/corretora/todas">Corretora</a></li>
+            <li class="breadcrumb-item active">Saldo</li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+            <p class="lead">Saldo das corretoras</p>
+            
+        </div>                        
+	</body>	
+</html>
