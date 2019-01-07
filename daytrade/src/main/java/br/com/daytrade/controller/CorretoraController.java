@@ -17,10 +17,21 @@ public class CorretoraController {
     
     @RequestMapping(value = { "/todas" }, method = RequestMethod.GET)
     public String index(Model model) {
+        
+        //Map<String, Integer> map = this.corretoraService.buscaTodosMem();        
+        //map.forEach((k, v) -> System.out.println((k + ":" + v)));
                         
         model.addAttribute("corretoras", this.corretoraService.buscaTodos());    
                 
         return "corretora-todas";
     }
     
+    @RequestMapping(value = { "/saldo" }, method = RequestMethod.GET)
+    public String saldo(Model model) {
+                               
+        model.addAttribute("corretoras", this.corretoraService.buscaTodosMem());    
+                
+        return "corretora-saldo";        
+    }
+
 }

@@ -10,9 +10,7 @@ import org.springframework.data.repository.query.Param;
 import br.com.daytrade.domain.Frequencia;
 
 public interface FrequenciaRepository extends CrudRepository<Frequencia, Integer> {
-    
-    //Frequencia buscaPorPregao(Date pregao);
-    
+        
     @Query("FROM Frequencia f WHERE f.pregao >= :dataInicio ORDER BY f.pregao DESC")
     List<Frequencia> buscaPorDias(@Param("dataInicio") Date dataInicio);
 

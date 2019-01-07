@@ -16,11 +16,19 @@ public class Corretora {
     @Column(name="nome")
     private String nome;
     
-    @Column(name="corprimaria")
+    @Column(name="cor_primaria")
     private String corPrimaria;
     
-    @Column(name="corsecundaria")
+    @Column(name="cor_secundaria")
     private String corSecundaria;
+    
+    public Corretora(Integer id) {
+        this.id = id;
+    }
+    
+    public Corretora() {
+        
+    }
 
     public Integer getId() {
         return id;
