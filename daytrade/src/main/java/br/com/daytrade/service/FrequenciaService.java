@@ -33,8 +33,8 @@ public class FrequenciaService {
         
     
     public FrequenciaVO frequenciaAtual() {
-        
-        List<Frequencia> frequencias = this.buscaPorDias(15);
+        //FIXME:Corrigir para buscar a data do ultimo pregão!
+        List<Frequencia> frequencias = this.buscaPorDias(25);
         int cont = 0;
         
         BigDecimal ultimos3 = new BigDecimal(0);
@@ -57,12 +57,7 @@ public class FrequenciaService {
             cont++;
         }
         
-        System.out.println(ultimos3.divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
-        System.out.println(ultimos5.divide(new BigDecimal(5), 2, RoundingMode.HALF_UP));
-        System.out.println(ultimos7.divide(new BigDecimal(7), 2, RoundingMode.HALF_UP));
-        
-        System.out.println(frequencias.get(0).getPregao());
-        System.out.println(frequencias.get(6).getPregao());
+
         FrequenciaVO vo = new FrequenciaVO(frequencias.get(0).getPregao(), frequencias.get(6).getPregao());
         
         vo.setUltimos3Pregoes(ultimos3.divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{base/layout.html}">
+	
+	<body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item active">Corretora</li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+            <p class="lead">Todas as corretoras</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cor primária</th>
+                        <th scope="col">Cor secudária</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="corretora: ${corretoras}">
+                        <td th:text="${corretora.id}" />
+                        <td th:text="${corretora.nome}" />
+                        <td th:text="${corretora.corPrimaria}" />
+                        <td th:text="${corretora.corSecundaria}" />
+                    </tr>
+                </tbody>            
+            </table>
+        </div>                        
+	</body>	
+</html>
