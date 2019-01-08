@@ -12,7 +12,47 @@
         
         <div layout:fragment="page_content" id="page_content">
             <p class="lead">Saldo das corretoras</p>
+            <form action="#" id="form-corretora-saldo" th:action="@{/corretora/saldo}" method="POST">
+                <div class="form-row">
+                    <!-- Data inicio -->
+					<div class="form-group col-md-2">
+						<label for="validationTooltipUsername">Data inicio</label>
+						<input type="text" class="form-control" id="dataInicio" placeholder="dd/mm/aaaa">
+						<div class="invalid-tooltip">Please choose a unique and valid username.</div>	
+					</div>
+					<!-- Data fim -->
+					<div class="form-group col-md-2">
+                        <label for="validationTooltipUsername">Data Fim</label>					
+                        <input type="text" class="form-control" id="dataFim" placeholder="dd/mm/aaaa">
+					</div>
+					<!-- Corretoras -->
+                    <div class="form-group col-md-2">
+                        <label for="validationTooltipUsername">Corretora</label>
+                        <select class="form-control" id="corretora" name="corretora">
+                            <option th:each="cor : ${corretoras}" th:value="${cor.value}" th:text="${cor.key}"></option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-success" type="submit">Submit form</button>
+                    <!-- Submit -->
+       
+				</div>
+            </form>
             
+            <hr>       
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-success">
+                        <th scope="col">Pregão</th>
+                        <th scope="col">Corretora</th>
+                        <th scope="col">Volume</th>
+                        <th scope="col">Contratos</th>
+                        <th scope="col">Média</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>            
+            </table>                             
         </div>                        
 	</body>	
 </html>

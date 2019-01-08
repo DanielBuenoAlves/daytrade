@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base/layout.html}">
+    
+    <body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item"><a href="/pregao/principal">Pregão</a></li>
+            <li class="breadcrumb-item active">Cadastro de pregão</li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+            <p class="lead">Insira as informações</p>
+            
+            <form action="#" id="form-pregao-cadastro" th:object="${pregao}" th:action="@{/pregao/salvar}" method="POST">
+                <!-- Data do pregão -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+	                    <label for="pregao">Data do pregão</label>
+	                    <input type="text" class="form-control date" th:field="*{data}" id="pregao" placeholder="dd/mm/aaaa">
+                    </div>
+                </div>
+                <!-- Mínima e Máxima -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+	                    <label for="minima">Mínima</label>
+	                    <input type="text" class="form-control money" th:field="*{minima}" id="minima" placeholder="R$ Mínima">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="maxima">Máxima</label>
+                        <input type="text"  class="form-control money" th:field="*{maxima}" id="maxima" placeholder="R$ Máxima">
+                    </div>
+                </div>
+                <!-- Abertura e Fechamento -->
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="abertura">Abertura</label>
+                        <input type="text" class="form-control money" th:field="*{abertura}" id="abertura" placeholder="R$ Abertura">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="fechamento">Fechamento</label>
+                        <input type="text" class="form-control money" th:field="*{fechamento}" id="fechamento" placeholder="R$ Fechamento">
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Cadastrar</button>            
+            </form>
+        </div>
+        
+        <!-- JS -->
+        <div layout:fragment="scripts" id="scripts">
+            <script src="../jquery.mask.min.js"></script>
+	        <script>
+	            $(document).ready(function(){
+	            	$('.money').mask("###0.00", {reverse: true});
+	            	$('.date').mask('00/00/0000');
+		        });	        
+	        </script>
+        </div>
+    </body> 
+</html>

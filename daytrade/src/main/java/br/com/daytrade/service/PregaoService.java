@@ -10,17 +10,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.daytrade.domain.Frequencia;
-import br.com.daytrade.repository.FrequenciaRepository;
+import br.com.daytrade.domain.Pregao;
+import br.com.daytrade.repository.PregaoRepository;
 import br.com.daytrade.service.vo.FrequenciaVO;
 
 @Service
-public class FrequenciaService {
+public class PregaoService {
     
     @Autowired
-    private FrequenciaRepository frequenciaRepository;
+    private PregaoRepository pregaoRepository;
     
-    public List<Frequencia> buscaPorDias(int qtdDias){
+    public List<Pregao> buscaPorDias(int qtdDias){
         
         LocalDate data = LocalDate.now().minusDays(qtdDias);
         
@@ -28,37 +28,37 @@ public class FrequenciaService {
                                 .atZone(ZoneId.systemDefault())
                                 .toInstant());
         
-        return (List<Frequencia>) this.frequenciaRepository.buscaPorDias(dataPesquisa);
+        return (List<Pregao>) this.pregaoRepository.buscaPorDias(dataPesquisa);
     }
         
     
     public FrequenciaVO frequenciaAtual() {
         //FIXME:Corrigir para buscar a data do ultimo pregão!
-        List<Frequencia> frequencias = this.buscaPorDias(20);
+        List<Pregao> pregoes = this.buscaPorDias(20);
         int cont = 0;
         
         BigDecimal ultimos3 = new BigDecimal(0);
         BigDecimal ultimos5 = new BigDecimal(0);
         BigDecimal ultimos7 = new BigDecimal(0);
         
-        for(Frequencia fre : frequencias) {
+        for(Pregao pre : pregoes) {
             
             //Ultimos 3
             if(cont < 3) {
-                ultimos3 = ultimos3.add(fre.getMedia());
+                ultimos3 = ultimos3.add(pre.getMedia());
             } 
             if(cont < 5) {
-                ultimos5 = ultimos5.add(fre.getMedia());
+                ultimos5 = ultimos5.add(pre.getMedia());
             }
             if(cont < 7) {
-                ultimos7 = ultimos7.add(fre.getMedia());
+                ultimos7 = ultimos7.add(pre.getMedia());
             }
                         
             cont++;
         }
         
 
-        FrequenciaVO vo = new FrequenciaVO(frequencias.get(0).getPregao(), frequencias.get(6).getPregao());
+        FrequenciaVO vo = new FrequenciaVO(pregoes.get(0).getData(), pregoes.get(6).getData());
         
         vo.setUltimos3Pregoes(ultimos3.divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));
         vo.setUltimos5Pregoes(ultimos5.divide(new BigDecimal(5), 2, RoundingMode.HALF_UP));
@@ -69,14 +69,14 @@ public class FrequenciaService {
     }
     
     
-    public void cadastrar(Frequencia frequencia) {
+    public void cadastrar(Pregao pregao) {
         
         //Calcula a média da frequencia (máxima - minima) - 10%        
-        frequencia.setMedia(
-                this.percentual(frequencia.getMaxima().subtract(frequencia.getMinima())
+        pregao.setMedia(
+                this.percentual(pregao.getMaxima().subtract(pregao.getMinima())
                                 , new BigDecimal(10)));
         
-        this.frequenciaRepository.save(frequencia);        
+        this.pregaoRepository.save(pregao);        
     }            
     
     private BigDecimal percentual(BigDecimal base, BigDecimal percentual) {        

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.daytrade.service.FrequenciaService;
+import br.com.daytrade.service.PregaoService;
 import br.com.daytrade.service.vo.FrequenciaVO;
 
 @RunWith(SpringRunner.class)
@@ -14,7 +14,7 @@ import br.com.daytrade.service.vo.FrequenciaVO;
 public class FrequenciaServiceTest {
 
     @Autowired
-    private FrequenciaService frequenciaService;
+    private PregaoService frequenciaService;
     
     @Test
     public void init() {

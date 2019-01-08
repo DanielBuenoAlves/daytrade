@@ -34,4 +34,13 @@ public class CorretoraController {
         return "corretora-saldo";        
     }
 
+    
+    @RequestMapping(value = { "/saldo" }, method = RequestMethod.POST)
+    public String saldo2(Model model) {
+                               
+        model.addAttribute("corretoras", this.corretoraService.buscaTodosMem());    
+                
+        return "corretora-saldo";        
+    }
+    
 }
