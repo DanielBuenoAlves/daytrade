@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.text.Normalizer;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -34,21 +33,21 @@ public class SaldoCorretoraRepositoryTest {
     @Test
     public void insereTest() {
         
-        LocalDate localDate = LocalDate.parse("2019-01-02");
+        LocalDate localDate = LocalDate.parse("2019-01-07");
         Date data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
-        String arquivo = "D:\\ambiente-de-trabalho\\@\\day_trade\\workspace\\banco-de-dados\\SaldoCorretora_02_01_2019.csv";
+        String arq = "D:\\ambiente-de-trabalho\\@\\day_trade\\workspace\\banco-de-dados\\inserts\\saldo-corretora\\2019_01_07_SaldoCorretora.csv";
         
         Map<String, Integer> map = this.corretoraService.buscaTodosMem();
         
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(
-                new FileInputStream(arquivo), "ISO-8859-1"))){
+                new FileInputStream(arq), "ISO-8859-1"))){
             
-            String line = reader.readLine();
+            String linha = reader.readLine();
             
-            while(line != null) {
+            while(linha != null) {
                 //System.out.println(line);                
-                String[] val = line.split(";");
+                String[] val = linha.split(";");
                 
                 SaldoCorretora saldoCorretora = new SaldoCorretora();
                 
@@ -61,7 +60,7 @@ public class SaldoCorretoraRepositoryTest {
                 //System.out.println(saldoCorretora);
                 this.saldoCorretoraRepository.save(saldoCorretora);
                 
-                line = reader.readLine();
+                linha = reader.readLine();
             }            
         } catch (Exception e) {
             e.printStackTrace();
