@@ -54,7 +54,7 @@ public class PregaoController {
         
         //Redireciona. TODO: Criar msg de sucesso
         ModelAndView mv = new ModelAndView("redirect:/pregao/cadastro");
-        mv.addObject("sucesso", "Pregão cadastrada com sucesso!");
+        mv.addObject("sucesso", "Pregão cadastrado com sucesso!");
                 
         return mv;
     }        

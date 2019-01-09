@@ -11,30 +11,30 @@
         </th:block>
         
         <div layout:fragment="page_content" id="page_content">
-            <p class="lead">Saldo das corretoras</p>
-            <form action="#" id="form-corretora-saldo" th:action="@{/corretora/saldo}" method="POST">
+        <!-- <p class="lead">Saldo das corretoras</p> -->
+            <form action="#" id="form-corretora-saldo" th:object="${saldoCorretoraVO}" th:action="@{/corretora/saldo-busca}" method="POST">
                 <div class="form-row">
                     <!-- Data inicio -->
 					<div class="form-group col-md-2">
-						<label for="validationTooltipUsername">Data inicio</label>
-						<input type="text" class="form-control" id="dataInicio" placeholder="dd/mm/aaaa">
+						<label for="dataInicio">Data inicio</label>
+						<input type="text" class="form-control" id="dataInicio" th:field="*{dataInicio}" placeholder="dd/mm/aaaa">
 						<div class="invalid-tooltip">Please choose a unique and valid username.</div>	
 					</div>
 					<!-- Data fim -->
 					<div class="form-group col-md-2">
-                        <label for="validationTooltipUsername">Data Fim</label>					
-                        <input type="text" class="form-control" id="dataFim" placeholder="dd/mm/aaaa">
+                        <label for="dataFim">Data Fim</label>					
+                        <input type="text" class="form-control" id="dataFim" th:field="*{dataFim}" placeholder="dd/mm/aaaa">
 					</div>
 					<!-- Corretoras -->
                     <div class="form-group col-md-2">
-                        <label for="validationTooltipUsername">Corretora</label>
-                        <select class="form-control" id="corretora" name="corretora">
-                            <option th:each="cor : ${corretoras}" th:value="${cor.value}" th:text="${cor.key}"></option>
+                        <label for="corretora">Corretora</label>
+                        <select class="form-control" id="corretora" name="corretora" th:field="*{idCorretora}">
+                            <option value=""> </option>
+                            <option th:each="cor : ${corretoras}" th:value="${cor.id}" th:text="${cor.nome}"></option>
                         </select>
                     </div>
-                    <button class="btn btn-outline-success" type="submit">Submit form</button>
                     <!-- Submit -->
-       
+                    <button class="btn btn-outline-success" type="submit">Enviar</button>                           
 				</div>
             </form>
             
@@ -51,6 +51,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- ...... -->
                 </tbody>            
             </table>                             
         </div>                        

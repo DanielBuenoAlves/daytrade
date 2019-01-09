@@ -8,12 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="Pregao")
 public class Pregao {
         
     @Id
     @Column(name="data")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date data;
     
     @Column(name="abertura")
