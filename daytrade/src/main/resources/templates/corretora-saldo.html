@@ -17,18 +17,18 @@
                     <!-- Data inicio -->
 					<div class="form-group col-md-2">
 						<label for="dataInicio">Data inicio</label>
-						<input type="text" class="form-control" id="dataInicio" th:field="*{dataInicio}" placeholder="dd/mm/aaaa">
+						<input type="text" class="form-control" id="dataInicio" name="dataInicio" th:value="${#dates.format(saldoCorretoraVO.dataInicio,'dd/MM/yyyy')}" placeholder="dd/mm/aaaa">
 						<div class="invalid-tooltip">Please choose a unique and valid username.</div>	
 					</div>
 					<!-- Data fim -->
 					<div class="form-group col-md-2">
                         <label for="dataFim">Data Fim</label>					
-                        <input type="text" class="form-control" id="dataFim" th:field="*{dataFim}" placeholder="dd/mm/aaaa">
+                        <input type="text" class="form-control" id="dataFim" name="dataFim" th:value="${#dates.format(saldoCorretoraVO.dataFim,'dd/MM/yyyy')}" placeholder="dd/mm/aaaa">
 					</div>
 					<!-- Corretoras -->
                     <div class="form-group col-md-2">
                         <label for="corretora">Corretora</label>
-                        <select class="form-control" id="corretora" name="corretora" th:field="*{idCorretora}">
+                        <select class="form-control" id="idCorretora" name="idCorretora" th:value="${idCorretora}" >
                             <option value=""> </option>
                             <option th:each="cor : ${corretoras}" th:value="${cor.id}" th:text="${cor.nome}"></option>
                         </select>
@@ -51,7 +51,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- ...... -->
+                    <tr th:each="saldo : ${lista}">
+                        <td th:text="${#dates.format(saldo.pregao,'dd/MM/yyyy')}" />
+                        <td th:text="${saldo.corretora.nome}" />
+                        <td th:text="${#numbers.formatInteger(saldo.volFinanceiro,3,'POINT')}" />
+                        <td th:text="${#numbers.formatInteger(saldo.volQuantidade,3,'POINT')}" />
+                     <td th:text="${#numbers.formatDecimal(saldo.media,2,2,'COMMA')}" />
+<!--                          <td th:text="${saldo.media}" /> -->
+                    </tr>
                 </tbody>            
             </table>                             
         </div>                        

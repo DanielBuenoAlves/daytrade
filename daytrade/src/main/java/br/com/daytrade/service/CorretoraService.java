@@ -34,7 +34,6 @@ public class CorretoraService {
     
     public Map<String, Integer> buscaTodosMem(){                               
         return this.corretorasMap;
-    }
-    
+    }    
     
 }
