@@ -6,30 +6,78 @@
 	
 	<body>
         <th:block layout:fragment="breadcrumb">
-            <li class="breadcrumb-item"><a href="/ordem-original/consulta">Corretora</a></li>
+            <li class="breadcrumb-item"><a href="/ordem-original/consulta">Blah blah</a></li>
+            <li class="breadcrumb-item active">Consulta</li>
         </th:block>
         
         <div layout:fragment="page_content" id="page_content">
-            <!-- <p class="lead">Saldo das corretoras</p> -->
-            <form action="#" id="form-ordem-original"  method="POST">
-            
-            </form>
-            
-            <hr>       
-            
-            <table class="table table-hover">
-                <thead>
-                    <tr class="table-success">
-                        <th scope="col">Pregão</th>
-                        <th scope="col">Corretora</th>
-                        <th scope="col">Volume</th>
-                        <th scope="col">Contratos</th>
-                        <th scope="col">Média</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>            
-            </table>                             
+	        <p class="lead">Ordem original - Agressões</p>
+			
+	        <form action="#" id="form-ordem-original" th:object="${ordemOriginal}" th:action="@{/ordem-original/consulta}" method="POST">			
+				<div class="form-row">
+				    <!-- Data do pregão -->
+					<div class="form-group col-md-2">
+						<label for="pregao">Data do pregão</label> 
+						<input type="text"
+							   class="form-control date" id="pregao"
+							   placeholder="dd/mm/aaaa">
+					</div>
+		            <!-- Agressão -->
+		            <div class="form-group col-md-2">
+		                <label for="agressao">Agressão</label> 
+		                <select class="form-control" 
+		                        id="agressao" 
+		                        name="agressao">
+		                    <option value=""></option>
+		                    <option value="C">Compra</option>
+		                    <option value="V">Venda</option>
+		                    <option value="A">Compra e Venda</option>
+		                </select>
+		            </div>
+	                <!-- Lotes -->
+	                <div class="form-group col-md-2">
+	                    <label for="lotes">Lotes</label> 
+	                    <select class="form-control" 
+	                            id="lostes" 
+	                            name="lotes">
+	                        <option value=""></option>
+	                        <option value="">Maior e igual a 50</option>
+	                        <option value="">Maior e igual a 100</option>
+	                    </select>
+	                </div>
+	                <!-- Corretora -->
+					<div class="form-group col-md-2">
+						<label for="corretora">Corretora</label> 
+						<select class="form-control" 
+						        id="idCorretora" 
+						        name="idCorretora"
+							    th:value="${idCorretora}">
+							<option value=""></option>
+							<option th:each="cor : ${corretoras}" th:value="${cor.id}" th:text="${cor.nome}"></option>
+						</select>
+					</div>
+                    <div class="form-group col-md-1">
+                    <label for="">Caral</label>
+                        <button type="submit" class="btn btn-outline-success">Consultar</button>
+                    </div>
+				</div>
+			</form>
+	
+			<hr>
+	
+			<table class="table table-hover">
+				<thead>
+					<tr class="table-success">
+						<th scope="col">Pregão</th>
+						<th scope="col">Corretora</th>
+						<th scope="col">Lotes</th>
+						<th scope="col">Valor</th>
+						<th scope="col">Agressão</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
         </div>                        
 	</body>	
 </html>
