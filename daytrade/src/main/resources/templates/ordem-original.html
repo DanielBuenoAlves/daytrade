@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{base/layout.html}">
+	
+	<body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item"><a href="/ordem-original/consulta">Corretora</a></li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+            <!-- <p class="lead">Saldo das corretoras</p> -->
+            <form action="#" id="form-ordem-original"  method="POST">
+            
+            </form>
+            
+            <hr>       
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-success">
+                        <th scope="col">Pregão</th>
+                        <th scope="col">Corretora</th>
+                        <th scope="col">Volume</th>
+                        <th scope="col">Contratos</th>
+                        <th scope="col">Média</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>            
+            </table>                             
+        </div>                        
+	</body>	
+</html>

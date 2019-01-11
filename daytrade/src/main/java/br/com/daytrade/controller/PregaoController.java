@@ -19,7 +19,7 @@ public class PregaoController {
     @Autowired
     private PregaoService pregaoService;
     
-    @RequestMapping(value = { "/principal" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/frequencia" }, method = RequestMethod.GET)
     public String index(Model model) {
                         
         model.addAttribute("frequenciaVO", this.pregaoService.frequenciaAtual());    
@@ -64,7 +64,7 @@ public class PregaoController {
      * @param model
      * @return
      */
-    @RequestMapping(value = { "/historico" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/frequencia-historico" }, method = RequestMethod.GET)
     public String historico(Model model) {
         
         //Os dois últimos meses + ou -

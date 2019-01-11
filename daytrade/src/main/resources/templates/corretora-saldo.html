@@ -6,13 +6,13 @@
 	
 	<body>
         <th:block layout:fragment="breadcrumb">
-            <li class="breadcrumb-item"><a href="/corretora/todas">Corretora</a></li>
+            <li class="breadcrumb-item"><a href="/corretora/lista">Corretora</a></li>
             <li class="breadcrumb-item active">Saldo</li>
         </th:block>
         
         <div layout:fragment="page_content" id="page_content">
         <!-- <p class="lead">Saldo das corretoras</p> -->
-            <form action="#" id="form-corretora-saldo" th:object="${saldoCorretoraVO}" th:action="@{/corretora/saldo-busca}" method="POST">
+            <form action="#" id="form-corretora-saldo" th:object="${saldoCorretoraVO}" th:action="@{/corretora/saldo-consulta}" method="POST">
                 <div class="form-row">
                     <!-- Data inicio -->
 					<div class="form-group col-md-2">

@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import br.com.daytrade.domain.SaldoCorretora;
 import br.com.daytrade.service.CorretoraService;
@@ -26,7 +25,7 @@ public class CorretoraController {
     @Autowired
     private SaldoCorretoraService saldoCorretoraService;
     
-    @RequestMapping(value = { "/todas" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/lista" }, method = RequestMethod.GET)
     public String index(Model model) {
         
         //Map<String, Integer> map = this.corretoraService.buscaTodosMem();        
@@ -57,8 +56,8 @@ public class CorretoraController {
      * @param result
      * @return
      */
-    @RequestMapping(value = { "/saldo-busca" }, method = RequestMethod.POST)
-    public String buscaSaldo(@ModelAttribute SaldoCorretoraVO scVO, BindingResult result, Model model) {
+    @RequestMapping(value = { "/saldo-consulta" }, method = RequestMethod.POST)
+    public String consultaSaldo(@ModelAttribute SaldoCorretoraVO scVO, BindingResult result, Model model) {
                                
         //model.addAttribute("corretoras", this.corretoraService.buscaTodosMem());
         //Redireciona. TODO: Criar msg de sucesso
