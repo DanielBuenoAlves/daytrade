@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.daytrade.service.CorretoraService;
@@ -19,6 +20,14 @@ public class OrdemOriginalController {
     public String consulta(Model model) {
         
         model.addAttribute("corretoras", this.corretoraService.buscaTodos());
+        
+        return "ordem-original";
+    }
+    
+    @PostMapping("/consulta")
+    public String consuta(Model model) {
+        
+        
         
         return "ordem-original";
     }

@@ -2,7 +2,7 @@
       FROM ordem_original ordO
 INNER JOIN corretora cor ON ordO.corretora = cor.id
      WHERE ordO.quantidade >= 250
-       AND ordO.agressor = 'C'
+       AND ordO.agressor IN('C', 'V')
        AND ordO.pregao = '2019-01-02'
   ORDER BY ordO.pregao, ordO.hora;
 

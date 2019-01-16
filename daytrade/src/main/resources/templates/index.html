@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base/layout.html}">
+    
+    <body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item active">Início</li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+            <p class="lead"></p>
+            <div class="card-deck mb-2">
+            
+                <!-- Início -->
+                <div class="card card border-info mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Home Office</h4>
+                    </div>                  
+                    <div class="card-body">
+                        <h4 class="card-title">Tempo total</h4>
+                        <p class="card-text" th:text="${tempoHomeOffice}"></p>
+                    </div>
+                </div>
+
+                <!-- Tempo restante -->
+                <div class="card border-warning mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Contrato</h4>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Contrato termina em</h4>
+                        <p class="card-text" th:text="${#dates.format(terminoContrato,'dd/MM/yyyy')}"></p>
+                    </div>
+                </div>
+            </div>                 
+        </div>
+        
+        <!-- JS -->
+    </body> 
+</html>

@@ -34,12 +34,12 @@ public class OrdemOriginalRepositoryTest {
     @Test
     public void init() {
          
-        LocalDate localDate = LocalDate.parse("2019-01-10");
+        LocalDate localDate = LocalDate.parse("2019-01-15");
         Date data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
-        String arq = "D:\\ambiente-de-trabalho\\@\\day_trade\\workspace\\banco-de-dados\\inserts\\ordem-original\\2019_01_10_OrdemOriginal.csv";
+        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\workspace\\banco-de-dados\\inserts\\ordem-original\\2019_01_15_OrdemOriginal.csv";
         
-        String arqEscrita = "D:\\ambiente-de-trabalho\\@\\day_trade\\workspace\\banco-de-dados\\inserts\\ordem-original\\_Inserts.sql";
+        String arqEscrita = "D:\\ambiente-de-trabalho\\@\\day-trade\\workspace\\banco-de-dados\\inserts\\ordem-original\\_Inserts.sql";
         
         String insert = "INSERT INTO ordem_original(pregao, hora, corretora, quantidade, valor, agressor) VALUES(";
         StringBuilder sql = new StringBuilder();                
