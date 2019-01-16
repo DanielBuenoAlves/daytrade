@@ -12,25 +12,35 @@
         <div layout:fragment="page_content" id="page_content">
             <p class="lead"></p>
             <div class="card-deck mb-2">
-            
-                <!-- Início -->
+                <!-- Estudo -->
+                <div class="card card border-success mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Estudo</h4>
+                    </div>                  
+                    <div class="card-body">
+                        <h4 class="card-title">Sigma</h4>
+                        <p class="card-text">Início em 02/10/2018</p>
+                        <p class="card-text" th:text="${tempoEstudo}"></p>
+                    </div>
+                </div>            
+                <!-- Home Office -->
                 <div class="card card border-info mb-4 shadow-sm">
                     <div class="card-header">
                         <h4 class="my-0 font-weight-normal">Home Office</h4>
                     </div>                  
                     <div class="card-body">
                         <h4 class="card-title">Tempo total</h4>
+                        <p class="card-text">Início em 01/06/2018</p>
                         <p class="card-text" th:text="${tempoHomeOffice}"></p>
                     </div>
                 </div>
-
-                <!-- Tempo restante -->
+                <!-- Contrato -->
                 <div class="card border-warning mb-4 shadow-sm">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Contrato</h4>
+                        <h4 class="my-0 font-weight-normal">Contrato Conecta</h4>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">Contrato termina em</h4>
+                        <h4 class="card-title">Termina em</h4>
                         <p class="card-text" th:text="${#dates.format(terminoContrato,'dd/MM/yyyy')}"></p>
                     </div>
                 </div>

@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
     
-    @GetMapping("/")
+    private LocalDate hoje = LocalDate.now();
+    
+    @GetMapping({"/", "/index"})
     public String index(Model model) {
         
+        model.addAttribute("tempoEstudo", this.calculaTempoEstudo());
         model.addAttribute("tempoHomeOffice", this.calculaTempoHomeOffice());
         model.addAttribute("terminoContrato", this.calculaTerminoContrato());
         
@@ -22,10 +25,18 @@ public class MainController {
     }
     
     
+    private String calculaTempoEstudo() {
+        LocalDate inicioEstudo = LocalDate.parse("2018-10-02");
+                
+        Period time = Period.between(inicioEstudo, hoje);
+                        
+        return "Tempo de estudo: " + time.getMonths() + " meses e " + time.getDays() + " dias.";
+
+    }
+    
     private String calculaTempoHomeOffice() {
         
         LocalDate inicioHomeOffice = LocalDate.parse("2018-06-01");
-        LocalDate hoje = LocalDate.now();
                 
         Period time = Period.between(inicioHomeOffice,hoje);
                 
