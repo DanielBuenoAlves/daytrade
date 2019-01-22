@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="Ordem_Original")
 public class OrdemOriginal {
@@ -21,6 +23,7 @@ public class OrdemOriginal {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name="pregao")
     private Date pregao;
     

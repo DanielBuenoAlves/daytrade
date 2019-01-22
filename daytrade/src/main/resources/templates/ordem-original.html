@@ -13,21 +13,24 @@
         <div layout:fragment="page_content" id="page_content">
 	        <p class="lead">Ordem original - Agressões</p>
 			
-	        <form action="#" id="form-ordem-original" th:object="${ordemOriginal}" th:action="@{/ordem-original/consulta}" method="POST">			
+	        <form action="#" id="form-ordem-original" th:object="${ordemOriginalVO}" th:action="@{/ordem-original/consulta}" method="POST">			
 				<div class="form-row">
 				    <!-- Data do pregão -->
 					<div class="form-group col-md-2">
 						<label for="pregao">Data do pregão</label> 
 						<input type="text"
 							   class="form-control date" id="pregao"
-							   placeholder="dd/mm/aaaa">
+							   placeholder="dd/mm/aaaa"
+							   th:field="*{pregao}"
+							   th:value="${#dates.format(ordemOriginalVO.pregao,'dd/MM/yyyy')}">
 					</div>
 		            <!-- Agressão -->
 		            <div class="form-group col-md-2">
 		                <label for="agressao">Agressão</label> 
 		                <select class="form-control" 
 		                        id="agressao" 
-		                        name="agressao">
+		                        th:field="*{agressao}"
+		                        th:value="${ordemOriginalVO.agressao}">
 		                    <option value=""></option>
 		                    <option value="C">Compra</option>
 		                    <option value="V">Venda</option>
@@ -38,20 +41,27 @@
 	                <div class="form-group col-md-2">
 	                    <label for="lotes">Lotes</label> 
 	                    <select class="form-control" 
-	                            id="lostes" 
-	                            name="lotes">
+	                            id="quantidade" 
+	                            th:field="*{quantidade}"
+	                            th:value="${ordemOriginalVO.quantidade}">
 	                        <option value=""></option>
-	                        <option value="">Maior e igual a 50</option>
-	                        <option value="">Maior e igual a 100</option>
+	                        <option value="5">5</option>
+	                        <option value="25">25</option>
+	                        <option value="50">50</option>
+	                        <option value="100">100</option>
+	                        <option value="150">150</option>
+	                        <option value="200">200</option>
+	                        <option value="250">250</option>
+	                        <option value="300">300</option>
 	                    </select>
 	                </div>
 	                <!-- Corretora -->
 					<div class="form-group col-md-2">
 						<label for="corretora">Corretora</label> 
 						<select class="form-control" 
-						        id="idCorretora" 
-						        name="idCorretora"
-							    th:value="${idCorretora}">
+						        id="corretora" 
+							    th:value="${ordemOriginalVO.corretora}"
+							    th:field="*{corretora}">
 							<option value=""></option>
 							<option th:each="cor : ${corretoras}" th:value="${cor.id}" th:text="${cor.nome}"></option>
 						</select>
@@ -69,6 +79,7 @@
 				<thead>
 					<tr class="table-success">
 						<th scope="col">Pregão</th>
+						<th scope="col">Hora</th>
 						<th scope="col">Corretora</th>
 						<th scope="col">Lotes</th>
 						<th scope="col">Valor</th>
