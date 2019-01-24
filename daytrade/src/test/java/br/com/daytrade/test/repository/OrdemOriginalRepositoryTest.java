@@ -34,10 +34,10 @@ public class OrdemOriginalRepositoryTest {
     @Test
     public void init() {
          
-        LocalDate localDate = LocalDate.parse("2019-01-21");
+        LocalDate localDate = LocalDate.parse("2019-01-23");
         Date data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
-        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\ordem-original\\2019_01_21_OrdemOriginal.csv";
+        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\ordem-original\\2019_01_23_OrdemOriginal.csv";
         
         String arqEscrita = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\ordem-original\\_Inserts.sql";
         

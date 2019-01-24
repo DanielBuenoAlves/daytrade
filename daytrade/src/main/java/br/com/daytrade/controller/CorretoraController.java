@@ -1,14 +1,21 @@
 package br.com.daytrade.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.daytrade.domain.SaldoCorretora;
 import br.com.daytrade.service.CorretoraService;
@@ -72,6 +79,33 @@ public class CorretoraController {
         model.addAttribute("lista", lista);
                 
         return "corretora-saldo";
+    }
+    
+    @GetMapping("/saldo-carregar")
+    public String carregarSaldo() {
+        
+        return "corretora-saldo-carregar";
+    
+    }
+    
+    @PostMapping("/saldo-carregar")
+    public String carregarSaldo(@RequestParam("dataPregao") String dataPregao
+                                , @RequestParam("arquivo") MultipartFile arquivo
+                                , Model model) {
+                        
+        try {            
+            InputStream input = new ByteArrayInputStream(arquivo.getBytes());
+            
+            this.corretoraService.carregarSaldo(dataPregao, input);
+            
+            model.addAttribute("sucesso", "Arquivo carregado com sucesso!");            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            model.addAttribute("erro", "Erro ao carregar o arquivo!");            
+        }
+        
+        return "corretora-saldo-carregar";
     }
     
 }

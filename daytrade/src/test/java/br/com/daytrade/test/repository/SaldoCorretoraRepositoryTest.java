@@ -33,10 +33,10 @@ public class SaldoCorretoraRepositoryTest {
     @Test
     public void insereTest() {
         
-        LocalDate localDate = LocalDate.parse("2019-01-21");
+        LocalDate localDate = LocalDate.parse("2019-01-23");
         Date data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
-        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\saldo-corretora\\2019_01_21_SaldoCorretora.csv";
+        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\saldo-corretora\\2019_01_23_SaldoCorretora.csv";
         
         Map<String, Integer> map = this.corretoraService.buscaTodosMem();
         

@@ -49,7 +49,7 @@
                             <div class="dropdown-menu" aria-labelledby="download">
                                 <a class="dropdown-item" href="/corretora/lista">Lista</a>                                
                                 <a class="dropdown-item" href="/corretora/saldo">Saldo</a>
-                                <a class="dropdown-item" href="/frequencia/carregar-saldo">Carregar saldo</a>
+                                <a class="dropdown-item" href="/corretora/saldo-carregar">Carregar saldo</a>
                             </div>
                         </li>                       					
 						
@@ -79,19 +79,28 @@
 				</div><!-- navbar -->
 			</div>
 		</div>
-		
-		<!-- Conteudo 
-		<div class="container" layout:fragment="custom-content">
-			<div class="page-header" id="banner">
-				<div class="row">
-					<div class="col-lg-8 col-md-7 col-sm-6">
-						<h1>Flatly</h1>
-						<p class="lead">Flat and modern</p>
+
+		<!-- Modal sucesso -->
+		<div class="modal fade" id="modalSucesso" tabindex="-1"
+			 role="dialog" aria-labelledby="exampleModalCenterTitle"
+			 aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Operação efetuada com sucesso.</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body"><p th:text="${sucesso}"></p></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-success" data-dismiss="modal">OK</button>
 					</div>
 				</div>
 			</div>
-		</div>-->
-
+		</div>
+		
+	    <!-- Conteúdo -->
 		<div class="container">
 			<nav aria-label="breadcrumb" role="navigation">
 				<ol class="breadcrumb">
@@ -102,10 +111,17 @@
 				<div layout:fragment="page_content"></div>
 			</div>
 		</div>
-
+        
+        <!-- JS -->
 	    <script src="../jquery.min.js"></script>
 		<script src="../bootstrap.min.js"></script>
-			
+					
         <th:block layout:fragment="scripts"> </th:block>
+        
+        <!-- Modal sucesso -->
+        <script th:if="${sucesso}">
+          $('#modalSucesso').modal('show');
+        </script>   
+        
 	</body>
 </html>

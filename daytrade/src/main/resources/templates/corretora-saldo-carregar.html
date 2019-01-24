@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{base/layout.html}">
+	
+	<body>
+        <th:block layout:fragment="breadcrumb">
+            <li class="breadcrumb-item"><a href="/corretora/lista">Corretora</a></li>
+            <li class="breadcrumb-item"><a href="/corretora/saldo">Saldo</a></li>
+            <li class="breadcrumb-item active">Carregar saldo</li>
+        </th:block>
+        
+        <div layout:fragment="page_content" id="page_content">
+
+            <form action="#" id="form-corretora-saldo-carregar" th:action="@{/corretora/saldo-carregar}" method="POST" enctype="multipart/form-data">
+                <!-- Data Pregão -->
+                <div class="form-row">
+					<div class="form-group col-md-2">
+						<label for="dataPregao">Data pregão</label>
+						<input type="text" class="form-control" id="dataPregao" name="dataPregao" placeholder="dd/mm/aaaa">
+					</div>                     
+				</div>
+				<!-- Arquivo -->
+				<div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="arquivo">Arquivo</label>
+                        <input type="file" class="form-control-file" id="arquivo" name="arquivo">
+			        </div>
+			    </div>
+				<!-- Submit -->
+                <button class="btn btn-outline-success" type="submit">Enviar</button> 
+            </form>                                                     
+        </div>                        
+	</body>	
+</html>
