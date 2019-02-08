@@ -22,8 +22,8 @@ import br.com.daytrade.service.CorretoraService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrdemOriginalRepositoryTest {
-        
+public class HistoricoDeNegociosRepositoryTest {
+    
     @Autowired
     private CorretoraService corretoraService;
     
@@ -37,11 +37,11 @@ public class OrdemOriginalRepositoryTest {
         LocalDate localDate = LocalDate.parse("2019-02-07");
         Date data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
-        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\ordem-original\\2019_02_07_OrdemOriginal.csv";
+        String arq = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\historico-de-negocios\\2019_02_07_HistoricoDeNegocios.csv";
         
-        String arqEscrita = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\ordem-original\\_Inserts.sql";
+        String arqEscrita = "D:\\ambiente-de-trabalho\\@\\day-trade\\banco-de-dados\\inserts\\historico-de-negocios\\_Load.txt";
         
-        String insert = "INSERT INTO ordem_original(pregao, hora, corretora, quantidade, valor, agressor) VALUES(";
+        //String insert = "INSERT INTO ordem_original(pregao, hora, corretora, quantidade, valor, agressor) VALUES(";
         StringBuilder sql = new StringBuilder();                
         
         Map<String, Integer> map = this.corretoraService.buscaTodosMem();
@@ -61,10 +61,35 @@ public class OrdemOriginalRepositoryTest {
                 */
                 String[] val = linha.split(";");
                 
-                sql.append(insert);
-                sql.append("'" + this.formataDia.format(data) + "'").append(", ")
-                   .append("'" + val[0].toString() + "'").append(", ");
+                //Data e Hora
+                sql.append("" + this.formataDia.format(data) + "").append(",")
+                    .append("" + val[0].toString() + "").append(",");
                 
+                //Compradora
+                sql.append(map.get(val[1].toString())).append(",")
+                
+                //Valor
+                .append(val[2].replace(".", "").replace(",", ".")).append(",")
+                
+                //Quantidade
+                .append(new Integer(val[3].replace(".", ""))).append(",")
+                
+                //Vendedor
+                .append(map.get(val[4].toString())).append(",");
+                
+                //Agressor
+                if("COMPRADOR".equalsIgnoreCase(val[5].toString())) {
+                    sql.append("C");
+                } else if("VENDEDOR".equalsIgnoreCase(val[5].toString())) {
+                    sql.append("V");
+                } else if("DIRETO".equalsIgnoreCase(val[5].toString())) {
+                    sql.append("D");
+                } else {
+                    sql.append("L");
+                }
+                
+                
+                /*
                 String agressor = null;
                 if("COMPRADOR".equalsIgnoreCase(val[5].toString())) {
                    sql.append(map.get(val[1].toString())).append(", ");
@@ -80,10 +105,11 @@ public class OrdemOriginalRepositoryTest {
                                 
                 //System.out.println(ordemOriginal);
                 //this.repo.save(ordemOriginal);
-                sql.append(");\r");
+                 */
+                sql.append("\r\n");
                 linha = reader.readLine();
             }            
-            System.out.println(sql.toString());
+            //System.out.println(sql.toString());
             Files.write(Paths.get(arqEscrita), sql.toString().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
